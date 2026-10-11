@@ -39,3 +39,19 @@ docs/            BACKEND_INTEGRATION.md
 ## Backend readiness
 
 The UI only talks to the `CreditApi` interface. Expected endpoints: `GET /credit-summary`, `/credit-history`, `/score-trend`, `/creditors`, `/alerts`. See [docs/BACKEND_INTEGRATION.md](docs/BACKEND_INTEGRATION.md).
+
+## Local development
+
+```bash
+cd frontend
+npm install
+npm start        # http://localhost:4200
+```
+
+## GitHub Pages deployment
+
+Every push to `main` triggers `.github/workflows/deploy.yml`, which runs
+`npm run build:pages` (`ng build --base-href=/credit-history/` plus a `404.html`
+SPA fallback) and publishes to https://jfredmc.github.io/credit-history.
+
+One-time setup: in the repository, go to **Settings → Pages** and set **Source** to **GitHub Actions**.
