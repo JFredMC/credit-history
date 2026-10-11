@@ -1,57 +1,95 @@
-# credit-history
+# EXPEDIENTE
 
-Personal credit history demo inspired by DataCrédito Colombia: Angular 22 + Tailwind CSS frontend with simulated data, and a NestJS backend blueprint ready to be connected later. No real APIs or third-party services are used and all data is fictitious.
+<p align="center">
+  <img src="frontend/public/favicon.svg" width="72" alt="EXPEDIENTE" />
+</p>
 
-## Features
+<h1 align="center">EXPEDIENTE</h1>
 
-- **Dashboard** – score gauge (150–950), KPI cards (total debt, monthly installments, overdue debt, on-time payments), 12-month score trend, debt by credit type (donut), payment behavior (bars) and alerts.
-- **Credit history** – product table with status filter and 12-month payment strip.
-- **Creditors** – cards with risk/status and a detail page (amount, status, date, risk, observations, products).
-- **Timeline** – payments, installments, delays, closures, reports and inquiries, filterable.
-- **Alerts** – info / warning / critical alerts.
-- **Credit report** – printable report view with JSON and CSV export.
-- Responsive (mobile menu, scrollable tables), loading skeletons, error and empty states.
+<p align="center">
+  <b>Tu expediente crediticio bajo control.</b><br />
+  Dashboard de historial crediticio personal con score, deuda, comportamiento de pago, acreedores y alertas.
+</p>
 
-## Run locally
+<p align="center">
+  <a href="https://jfredmc.github.io/credit-history/"><b>Ver la demo</b></a>
+</p>
 
-Requires Node.js 20.19+ (22 recommended).
+## Qué es EXPEDIENTE
+
+EXPEDIENTE es una demo fintech inspirada en el historial crediticio colombiano, mejorada y presentada como una experiencia de producto real. La idea es mostrar cómo luciría un dashboard personal de crédito con score, deuda, historial, timeline de movimientos y alertas de riesgo, pero sin depender de datos bancarios reales.
+
+## Qué incluye
+
+- Score crediticio con rango 150–950
+- KPI de deuda total, cuota mensual, deuda vencida y pagos a tiempo
+- Historial de créditos por acreedor y tipo
+- Timeline de movimientos y alertas clave
+- Detalle por acreedor con riesgo, monto y observaciones
+- Reporte exportable en JSON y CSV
+- Tema claro y oscuro
+- Diseño responsivo y moderno
+- Estructura lista para conectar con un backend NestJS en una siguiente etapa
+
+## Arquitectura
+
+```text
+credit-history/
+├── frontend/
+│   ├── public/
+│   │   ├── favicon.svg
+│   │   └── brand/
+│   └── src/
+│       ├── app/
+│       │   ├── core/
+│       │   ├── features/
+│       │   ├── layout/
+│       │   └── shared/
+│       ├── index.html
+│       ├── main.ts
+│       └── styles.css
+├── backend/
+│   └── src/
+├── docs/
+├── .github/workflows/
+├── package.json
+├── README.md
+└── LICENSE
+```
+
+## Ejecutarlo localmente
 
 ```bash
 cd frontend
 npm install
-npm start        # http://localhost:4200
-npm test         # unit tests (Vitest)
-npm run build
+npm start
 ```
 
-## Structure
+La aplicación se sirve en:
 
-```
-frontend/src/app
-├── core/        models, mock data, CreditApi contract + Mock/Http implementations, CreditDataService
-├── shared/      SVG charts (line, donut, bars), UI states, label maps
-├── layout/      app shell / navigation
-└── features/    dashboard, history, creditors, timeline, report
-backend/src      NestJS blueprint: modules/{users,credit,creditors,score,history,alerts} with dto/ and entities/
-docs/            BACKEND_INTEGRATION.md
+```text
+http://localhost:4200
 ```
 
-## Backend readiness
+## Deploy en GitHub Pages
 
-The UI only talks to the `CreditApi` interface. Expected endpoints: `GET /credit-summary`, `/credit-history`, `/score-trend`, `/creditors`, `/alerts`. See [docs/BACKEND_INTEGRATION.md](docs/BACKEND_INTEGRATION.md).
+El proyecto tiene un workflow de GitHub Actions para publicar la app en GitHub Pages. La configuración correcta debe ser:
 
-## Local development
+1. Ir a GitHub > Settings > Pages
+2. En Source seleccionar "GitHub Actions"
+3. Asegurarse de que la workflow `Deploy to GitHub Pages` está activa
+4. Hacer push a `main`
 
-```bash
-cd frontend
-npm install
-npm start        # http://localhost:4200
+Luego la demo queda en:
+
+```text
+https://jfredmc.github.io/credit-history/
 ```
 
-## GitHub Pages deployment
+## Importante
 
-Every push to `main` triggers `.github/workflows/deploy.yml`, which runs
-`npm run build:pages` (`ng build --base-href=/credit-history/` plus a `404.html`
-SPA fallback) and publishes to https://jfredmc.github.io/credit-history.
+El README no debe verse como la app. Para que la URL pública muestre la demo, GitHub Pages debe apuntar al artefacto generado por Angular y no a la raíz del repositorio.
 
-One-time setup: in the repository, go to **Settings → Pages** and set **Source** to **GitHub Actions**.
+## Licencia
+
+MIT © Jhon Maquilón · JFredDev

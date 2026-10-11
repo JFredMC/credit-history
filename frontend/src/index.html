@@ -1,13 +1,42 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Frontend</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+<html lang="es" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <title>EXPEDIENTE · Historial de crédito</title>
+    <base href="/credit-history/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="EXPEDIENTE: historial de crédito personal, score, deuda, acreedores y alertas financieras con datos simulados."
+    />
+    <meta name="theme-color" content="#070d18" />
+    <meta name="author" content="JFredDev" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="EXPEDIENTE" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:title" content="EXPEDIENTE · Historial de crédito" />
+    <meta
+      property="og:description"
+      content="Dashboard financiero personal con historial de crédito, score, acreedores y alertas de riesgo."
+    />
+    <meta property="og:url" content="https://jfredmc.github.io/credit-history/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      try {
+        const stored = localStorage.getItem('expediente:theme');
+        const theme = stored === 'light' || stored === 'dark' ? stored : (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.dataset.theme = theme;
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <app-root></app-root>
+    <noscript>EXPEDIENTE necesita JavaScript para funcionar.</noscript>
+  </body>
 </html>
